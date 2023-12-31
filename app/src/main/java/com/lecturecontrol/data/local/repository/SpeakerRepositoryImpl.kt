@@ -8,4 +8,8 @@ class SpeakerRepositoryImpl(private val dataSource: SpeakerDataSource) : Speaker
     override fun getSpeakerById(speakerId: String): Speaker {
         return dataSource.getSpeakerById(speakerId)
     }
+
+    override fun getAllSpeakers(): List<Speaker> {
+        return dataSource.getAllSpeakers()
+    }
 }

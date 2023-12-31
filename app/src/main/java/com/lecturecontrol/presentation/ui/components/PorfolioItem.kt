@@ -20,13 +20,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lecturecontrol.domain.model.Portfolio
-import com.lecturecontrol.mockedSpeaker
+import com.lecturecontrol.domain.model.Speaker
 import com.lecturecontrol.utils.asyncImageLoad
 
 @Composable
 fun PortfolioItem(portfolio: Portfolio) {
     val portfolioPictureImageBitmap =
-        asyncImageLoad(LocalContext.current, portfolio.picture).value?.asImageBitmap()
+        asyncImageLoad(LocalContext.current, portfolio.imageUrl).value?.asImageBitmap()
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -38,7 +38,7 @@ fun PortfolioItem(portfolio: Portfolio) {
                 bitmap = it,
                 contentDescription = "Portfolio Picture",
                 modifier = Modifier
-                    .size(24.dp)
+                    .size(40.dp)
                     .clip(CircleShape),
                 contentScale = ContentScale.Crop
             )
@@ -56,5 +56,24 @@ fun PortfolioItem(portfolio: Portfolio) {
 @Preview
 @Composable
 fun PortfolioItemPreview() {
-    PortfolioItem(portfolio = mockedSpeaker.portfolio[0])
+    val speaker = Speaker(
+        id = "936267bb-0d59-4100-9afd-5358076f5855",
+        shortName = "Carlos Santos",
+        fullName = "Carlos Santos Silva Junior",
+        imageUrl = "https://picsum.photos/200/300?random=1",
+        company = "Company A",
+        title = "Desenvolvedor Java",
+        companyImageUrl = "https://picsum.photos/200/300?random=2",
+        biography = "Trabalhando no mundo da tecnologia há 6 anos, minha paixão é criar software que faça a diferença. Com um profundo conhecimento em linguagens de programação como S4 Hana e Phyton, estou sempre em busca de desafios que me permitam inovar e crescer como desenvolvedor.",
+        instagram = "@carlossa",
+        phone = "(11) 96576-2171",
+        email = "39f0548b@email.com",
+        portfolio = listOf(
+            Portfolio(name = "/carlasouza", imageUrl = "https://picsum.photos/200/300?random=1"),
+            Portfolio(
+                name = "/huehuehue", imageUrl = "https://picsum.photos/200/300?random=1",
+            )
+        )
+    )
+    PortfolioItem(portfolio = speaker.portfolio[0])
 }

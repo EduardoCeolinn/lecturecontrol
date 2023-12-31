@@ -1,4 +1,4 @@
-package com.lecturecontrol.presentation.ui.screens
+package com.lecturecontrol.presentation.ui.screens.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,13 +17,20 @@ import androidx.navigation.NavController
 import com.lecturecontrol.presentation.ui.components.LectureItem
 import com.lecturecontrol.presentation.ui.components.LectureSearchBar
 import com.lecturecontrol.presentation.viewmodel.LectureListViewModel
+import com.lecturecontrol.presentation.viewmodel.SpeakerViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun HomeContent(navController: NavController) {
     val lectureListViewModel: LectureListViewModel = getViewModel()
     val lecturesState by lectureListViewModel.lectures.observeAsState(emptyList())
+
+    val speakerViewModel: SpeakerViewModel = getViewModel()
+    speakerViewModel.getAllSpeakers()
+    val speakers by speakerViewModel.speakers.observeAsState()
+
     var filteredLectures by remember { mutableStateOf(lecturesState) }
+
     LaunchedEffect(lecturesState) {
         filteredLectures = lecturesState
     }
@@ -37,16 +44,19 @@ fun HomeContent(navController: NavController) {
             }
         }
 
-        LazyColumn(contentPadding = PaddingValues(bottom = 60.dp))
-        {
+        LazyColumn(contentPadding = PaddingValues(bottom = 60.dp)) {
             itemsIndexed(filteredLectures) { index, lecture ->
-                LectureItem(
-                    lecture = lecture,
-                    context = LocalContext.current,
-                    navController = navController,
-                    isFirstItem = index == 0,
-                    onFavoriteClick = { lectureListViewModel.favoriteLecture(lecture) }
-                )
+                val currentSpeaker = speakers?.find { it.id == lecture.speakerId }
+                currentSpeaker?.let { speaker ->
+                    LectureItem(
+                        lecture = lecture,
+                        speaker = speaker,
+                        context = LocalContext.current,
+                        navController = navController,
+                        isFirstItem = index == 0,
+                        onFavoriteClick = { lectureListViewModel.favoriteLecture(lecture) }
+                    )
+                }
             }
         }
     }

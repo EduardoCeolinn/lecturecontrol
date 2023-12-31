@@ -1,4 +1,4 @@
-package com.lecturecontrol.presentation.ui.navigation
+package com.lecturecontrol.presentation.navigation
 
 sealed class Routes(val route: String) {
     data object Home : Routes("home")

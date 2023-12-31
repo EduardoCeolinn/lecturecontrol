@@ -7,4 +7,8 @@ class GetSpeakerUseCase(private val repository: SpeakerRepository) {
     fun getSpeakerById(speakerId: String): Speaker {
         return repository.getSpeakerById(speakerId)
     }
+
+    fun getAllSpeakers(): List<Speaker> {
+        return repository.getAllSpeakers()
+    }
 }

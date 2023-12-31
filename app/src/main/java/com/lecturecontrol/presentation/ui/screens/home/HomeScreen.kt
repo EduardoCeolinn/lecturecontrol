@@ -1,4 +1,4 @@
-package com.lecturecontrol.presentation.ui.screens
+package com.lecturecontrol.presentation.ui.screens.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
@@ -16,8 +16,15 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.lecturecontrol.presentation.ui.components.BottomBar
 import com.lecturecontrol.presentation.ui.components.TopBar
-import com.lecturecontrol.presentation.ui.navigation.Routes
-import com.lecturecontrol.presentation.ui.navigation.SideBarMenu
+import com.lecturecontrol.presentation.navigation.Routes
+import com.lecturecontrol.presentation.ui.components.SideBarMenu
+import com.lecturecontrol.presentation.ui.screens.interactivemap.InteractiveMapContent
+import com.lecturecontrol.presentation.ui.screens.meetingroom.MeetingRoomContent
+import com.lecturecontrol.presentation.ui.screens.profile.ProfileContent
+import com.lecturecontrol.presentation.ui.screens.settings.SettingsContent
+import com.lecturecontrol.presentation.ui.screens.speaker.SpeakerDetailsContent
+import com.lecturecontrol.presentation.ui.screens.sponsors.SponsorsContent
+import com.lecturecontrol.presentation.ui.screens.visitorguide.VisitorGuideContent
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable

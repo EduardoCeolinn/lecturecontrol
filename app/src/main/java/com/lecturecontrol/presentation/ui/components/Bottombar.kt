@@ -20,7 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.lecturecontrol.R
-import com.lecturecontrol.presentation.ui.navigation.Routes
+import com.lecturecontrol.presentation.navigation.Routes
 
 @Composable
 fun BottomBar(navController: NavHostController) {

@@ -3,37 +3,48 @@ package com.lecturecontrol.data.local.datasource
 import com.lecturecontrol.domain.model.Lecture
 
 class LectureDataSource {
-    fun getLectures(): List<Lecture> = listOf(
+    private val speakers = mutableListOf(
         Lecture(
             id = "fb1db778-354e-4e71-b4b6-784631d060f5",
-            subject = "Subject 1",
-            company = "Company B",
+            subject = "Inovações em Inteligência Artificial",
+            date = "13 Jan, 14h00",
+            meetRoom = "Sala IA",
+            isFavorite = false,
+            speakerId = "936237bb-0d79-4300-9afd-5368078f5333",
+        ),
+        Lecture(
+            id = "2d33181f-d1f0-4565-87d9-af7f57954b22",
+            subject = "O Futuro da Energia Renovável",
             date = "12 Dez, 16h30",
-            meetRoom = "Sala Dino",
+            meetRoom = "Sala Energy",
+            isFavorite = false,
+            speakerId = "b6ef664d-ae0c-4e92-9e5b-c2c46a998181",
+        ),
+        Lecture(
+            id = "19793e5c-55b3-49b5-a010-8c54172c2267",
+            subject = "Avanços em Computação Quântica",
+            date = "12 Dez, 16h30",
+            meetRoom = "Sala Energy",
             isFavorite = true,
-            speakerId = "b6ef664d-ae0c-4e92-9e5b-c2c46a998181",
-            speakerPicture = "https://picsum.photos/100/300?random=3",
-            companyPicture = "https://picsum.photos/200/300?random=8"
-        ), Lecture(
-            id = "156ff137-dfd3-40b5-9bfa-f2ea0d2883f2",
-            subject = "Subject 2",
-            company = "Company A",
-            date = "15 Jan, 13h00",
-            meetRoom = "Sala 4",
-            isFavorite = false,
-            speakerId = "936267bb-0d59-4100-9afd-5358076f5855",
-            speakerPicture = "https://picsum.photos/200/300?random=1",
-            companyPicture = "https://picsum.photos/200/300?random=7"
-        ), Lecture(
-            id = "0f30a365-29b0-40cd-bcb5-464667689d14",
-            subject = "Subject 3",
-            company = "Company B",
-            date = "18 Jan, 10h00",
-            meetRoom = "Sala Marcelo",
+            speakerId = "936237bb-0d79-4300-9afd-5368078f5333",
+        ),
+        Lecture(
+            id = "0a62b1d3-7cbc-441b-b0cd-f8f3df510548",
+            subject = "Entendendo a Tecnologia Blockchain",
+            date = "12 Dez, 16h30",
+            meetRoom = "Sala IA",
             isFavorite = false,
             speakerId = "b6ef664d-ae0c-4e92-9e5b-c2c46a998181",
-            speakerPicture = "https://picsum.photos/100/300?random=3",
-            companyPicture = "https://picsum.photos/200/300?random=8"
+        ),
+        Lecture(
+            id = "0a854691-7ad1-41ee-b9b5-0936fbe2375e",
+            subject = "Explorando o Universo Web",
+            date = "12 Dez, 16h30",
+            meetRoom = "Sala Principal",
+            isFavorite = false,
+            speakerId = "236257bb-0d69-4300-9atd-5368078f59988",
         )
     )
+
+    fun getLectures(): List<Lecture> = speakers
 }

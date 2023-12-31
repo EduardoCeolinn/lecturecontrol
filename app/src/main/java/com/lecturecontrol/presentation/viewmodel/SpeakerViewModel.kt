@@ -11,13 +11,25 @@ class SpeakerViewModel(private val getSpeakersUseCase: GetSpeakerUseCase) : View
     private val _speaker = MutableLiveData<Speaker>()
     val speaker: MutableLiveData<Speaker> = _speaker
 
+    private val _speakers = MutableLiveData<List<Speaker>>()
+    val speakers: MutableLiveData<List<Speaker>> = _speakers
+
     fun getSpeakerById(speakerId: String) {
         viewModelScope.launch {
             try {
                 val speaker = getSpeakersUseCase.getSpeakerById(speakerId)
                 _speaker.value = speaker
-            } catch (e: Exception) {
-                // Tratar erros adequadamente, talvez atualizar um estado de erro no LiveData
+            } catch (_: Exception) {
+            }
+        }
+    }
+
+    fun getAllSpeakers() {
+        viewModelScope.launch {
+            try {
+                val allSpeakers = getSpeakersUseCase.getAllSpeakers()
+                _speakers.value = allSpeakers
+            } catch (_: Exception) {
             }
         }
     }

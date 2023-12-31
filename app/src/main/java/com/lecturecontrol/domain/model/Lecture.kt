@@ -7,11 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Lecture(
     val id: String,
     val subject: String,
-    val company: String,
     val date: String,
     val meetRoom: String,
     val isFavorite: Boolean = false,
-    val speakerId: String,
-    val speakerPicture: String,
-    val companyPicture: String
+    val speakerId: String
 ) : Parcelable

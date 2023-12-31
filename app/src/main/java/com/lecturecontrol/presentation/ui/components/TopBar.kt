@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.lecturecontrol.R
-import com.lecturecontrol.presentation.ui.navigation.Routes
+import com.lecturecontrol.presentation.navigation.Routes
 import com.lecturecontrol.presentation.ui.theme.MainPurple
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

@@ -37,19 +37,21 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.lecturecontrol.R
 import com.lecturecontrol.domain.model.Lecture
-import com.lecturecontrol.presentation.ui.navigation.Routes
+import com.lecturecontrol.domain.model.Speaker
+import com.lecturecontrol.presentation.navigation.Routes
 import com.lecturecontrol.utils.asyncImageLoad
 
 @Composable
 fun LectureItem(
     lecture: Lecture,
+    speaker: Speaker,
     context: Context,
     navController: NavController,
     isFirstItem: Boolean = false,
     onFavoriteClick: () -> Unit
 ) {
-    val speakerImageBitmap = asyncImageLoad(context, lecture.speakerPicture)
-    val companyImageBitmap = asyncImageLoad(context, lecture.companyPicture)
+    val speakerImageBitmap = asyncImageLoad(context, speaker.imageUrl)
+    val companyImageBitmap = asyncImageLoad(context, speaker.companyImageUrl)
 
     Card(
         shape = RoundedCornerShape(10.dp),
@@ -103,7 +105,7 @@ fun LectureItem(
                     }
                     Spacer(Modifier.width(4.dp))
                     Text(
-                        text = lecture.company,
+                        text = speaker.company,
                         style = MaterialTheme.typography.caption,
                         color = Color.Gray
                     )
@@ -158,21 +160,18 @@ fun LectureItem(
 fun LectureItemPreview() {
     val context = LocalContext.current
     val navController = rememberNavController()
-    val lecture = Lecture(
-        id = "fb1db778-354e-4e71-b4b6-784631d060f5",
-        subject = "Subject 1",
-        company = "Company B",
-        date = "2024-12-12",
-        meetRoom = "Room 10",
-        isFavorite = true,
-        speakerId = "b6ef664d-ae0c-4e92-9e5b-c2c46a998181",
-        speakerPicture = "https://picsum.photos/200/300?random=3",
-        companyPicture = "https://picsum.photos/200/300?random=7"
-    )
-    LectureItem(
-        lecture = lecture,
-        context = context,
-        navController = navController,
-        onFavoriteClick = {}
-    )
+//    val lecture = (
+//        id = "fb1db778-354e-4e71-b4b6-784631d060f5",
+//        subject = "Subject 1",
+//        date = "2024-12-12",
+//        meetRoom = "Room 10",
+//        isFavorite = true,
+//        speakerId = "b6ef664d-ae0c-4e92-9e5b-c2c46a998181",
+//    )
+//    LectureItem(
+//        lecture = lecture,
+//        context = context,
+//        navController = navController,
+//        onFavoriteClick = {}
+//    )
 }

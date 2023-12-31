@@ -1,4 +1,4 @@
-package com.lecturecontrol.presentation.ui.navigation
+package com.lecturecontrol.presentation.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.lecturecontrol.R
+import com.lecturecontrol.presentation.navigation.Routes
 import com.lecturecontrol.presentation.ui.theme.MainPurple
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

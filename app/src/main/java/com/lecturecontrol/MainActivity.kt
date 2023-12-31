@@ -8,9 +8,9 @@ import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.lecturecontrol.di.lectureModule
 import com.lecturecontrol.di.speakerModule
-import com.lecturecontrol.presentation.ui.screens.HomeScreen
-import com.lecturecontrol.presentation.ui.screens.SplashScreen
-import com.lecturecontrol.presentation.ui.screens.SplashScreenActions
+import com.lecturecontrol.presentation.ui.screens.home.HomeScreen
+import com.lecturecontrol.presentation.ui.screens.splash.SplashScreen
+import com.lecturecontrol.presentation.ui.screens.splash.SplashScreenActions
 import com.lecturecontrol.presentation.ui.theme.LectureControlTheme
 import com.lecturecontrol.presentation.ui.theme.MainPurple
 import org.koin.android.ext.koin.androidContext

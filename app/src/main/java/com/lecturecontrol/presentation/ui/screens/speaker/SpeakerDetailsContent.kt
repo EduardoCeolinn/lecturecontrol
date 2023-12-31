@@ -1,4 +1,4 @@
-package com.lecturecontrol.presentation.ui.screens
+package com.lecturecontrol.presentation.ui.screens.speaker
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -49,16 +49,14 @@ fun SpeakerDetailsContent(speakerId: String, topBarTitle: MutableState<String>) 
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        if (speaker == null) {
-            CircularProgressIndicator()
-        } else {
-            topBarTitle.value = speaker!!.name
+        speaker?.let { speaker ->
+            topBarTitle.value = speaker.shortName
             val speakerPictureImageBitmap =
-                asyncImageLoad(LocalContext.current, speaker!!.picture).value?.asImageBitmap()
+                asyncImageLoad(LocalContext.current, speaker.imageUrl).value?.asImageBitmap()
             val companyPictureImageBitmap =
                 asyncImageLoad(
                     LocalContext.current,
-                    speaker!!.companyPicture
+                    speaker.companyImageUrl
                 ).value?.asImageBitmap()
 
             LazyColumn(
@@ -85,7 +83,7 @@ fun SpeakerDetailsContent(speakerId: String, topBarTitle: MutableState<String>) 
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = speaker!!.fullName,
+                        text = speaker.fullName,
                         fontSize = 20.sp,
                         color = MaterialTheme.colors.onSurface
                     )
@@ -103,7 +101,7 @@ fun SpeakerDetailsContent(speakerId: String, topBarTitle: MutableState<String>) 
                         }
                         Spacer(modifier = Modifier.width(5.dp))
                         Text(
-                            text = "${speaker!!.company} | ${speaker!!.title}",
+                            text = "${speaker.company} | ${speaker.title}",
                             style = MaterialTheme.typography.body2,
                             fontSize = 20.sp,
                             color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
@@ -118,7 +116,7 @@ fun SpeakerDetailsContent(speakerId: String, topBarTitle: MutableState<String>) 
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = speaker!!.biography,
+                        text = speaker.biography,
                         fontSize = 14.sp
                     )
                     Spacer(modifier = Modifier.height(30.dp))
@@ -129,7 +127,7 @@ fun SpeakerDetailsContent(speakerId: String, topBarTitle: MutableState<String>) 
                         color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
                     )
                     Spacer(modifier = Modifier.height(20.dp))
-                    SpeakerContacts(speaker!!)
+                    SpeakerContacts(speaker)
                     Spacer(modifier = Modifier.height(30.dp))
                     Text(
                         text = "Portfólios",
@@ -138,10 +136,10 @@ fun SpeakerDetailsContent(speakerId: String, topBarTitle: MutableState<String>) 
                         color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f)
                     )
                     Spacer(modifier = Modifier.height(20.dp))
-                    SpeakerPortfolio(speakerPortfolio = speaker!!.portfolio)
+                    SpeakerPortfolio(speakerPortfolio = speaker.portfolio)
                 }
             }
-        }
+        } ?: CircularProgressIndicator()
     }
 }
 
