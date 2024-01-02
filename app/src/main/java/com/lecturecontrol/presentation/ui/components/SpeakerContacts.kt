@@ -54,7 +54,6 @@ fun SpeakerContacts(speaker: Speaker) {
             context.startActivity(intent)
         }
     }
-    // TODO JOGAR TUDO P OUTRAS CLASSES UTIL TALVEZ
 
     Row(
         modifier = Modifier
